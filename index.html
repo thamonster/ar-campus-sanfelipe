@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Terror en el Campus San Felipe</title>
+    <title>Dimension Terror - San Felipe</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   </head>
+
   <body style="margin: 0; overflow: hidden;">
     
-    <a-scene embedded arjs 
-             renderer="logarithmicDepthBuffer: true;"
+    <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false; videoTexture: true;'
+             renderer="logarithmicDepthBuffer: true; colorManagement: true;"
              vr-mode-ui="enabled: false">
 
-      <a-scene fog="type: exponential; density: 0.15; color: #1a0505;"></a-scene>
+      <a-scene fog="type: exponential; density: 0.04; color: #1a0505;"></a-scene>
 
-      <a-light type="ambient" color="#5c0000" intensity="1.5"></a-light>
-      <a-light type="point" color="#ff0000" intensity="2" position="0 2 0" distance="10" decay="2"></a-light>
+      <a-light type="ambient" color="#220000" intensity="1.5"></a-light>
+      <a-light type="point" color="#ff0000" intensity="2" position="0 2 -3" distance="10" animation="property: intensity; from: 2; to: 0.5; dir: alternate; dur: 1500; loop: true"></a-light>
 
       <a-asset-item id="modelo-uni" src="./escuela_terror.glb"></a-asset-item>
       
       <a-entity gltf-model="#modelo-uni" 
                 scale="1 1 1" 
-                position="0 0 -2" 
+                position="0 -1.6 0" 
                 rotation="0 0 0">
       </a-entity>
 
-      <a-entity camera></a-entity>
+      <a-entity camera look-controls></a-entity>
       
     </a-scene>
   </body>
